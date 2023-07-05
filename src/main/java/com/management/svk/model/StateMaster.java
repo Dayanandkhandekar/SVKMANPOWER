@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -16,25 +15,28 @@ public class StateMaster {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="state_id")
+	@Column(name = "state_id")
 	private Integer stateId;
-	
+
 	@NotBlank
 	@Size(max = 50)
-	@Column(name="state_name")
-	private String stateName;
-	
-	//@NotBlank
-	@Size(max = 50)
-	private String stateDesc;
-	
-	//@NotBlank
-	@Size(max = 20)
+	@Column(name = "statecode")
 	private String stateCode;
-	
+
+	// @NotBlank
+	@Size(max = 50)
+	@Column(name = "statenameenglish")
+	private String stateNameEnglish;
+
+	// @NotBlank
+	@Size(max = 20)
+	@Column(name = "stateocalname")
+	private String stateLocalName;
+
 	@NotBlank
 	@Size(max = 10)
-	private String stateStatus="N";
+	@Column(name = "state_status")
+	private String stateStatus = "N";
 
 	public Integer getStateId() {
 		return stateId;
@@ -42,22 +44,6 @@ public class StateMaster {
 
 	public void setStateId(Integer stateId) {
 		this.stateId = stateId;
-	}
-
-	public String getStateName() {
-		return stateName;
-	}
-
-	public void setStateName(String stateName) {
-		this.stateName = stateName;
-	}
-
-	public String getStateDesc() {
-		return stateDesc;
-	}
-
-	public void setStateDesc(String stateDesc) {
-		this.stateDesc = stateDesc;
 	}
 
 	public String getStateCode() {
@@ -68,6 +54,22 @@ public class StateMaster {
 		this.stateCode = stateCode;
 	}
 
+	public String getStateNameEnglish() {
+		return stateNameEnglish;
+	}
+
+	public void setStateNameEnglish(String stateNameEnglish) {
+		this.stateNameEnglish = stateNameEnglish;
+	}
+
+	public String getStateLocalName() {
+		return stateLocalName;
+	}
+
+	public void setStateLocalName(String stateLocalName) {
+		this.stateLocalName = stateLocalName;
+	}
+
 	public String getStateStatus() {
 		return stateStatus;
 	}
@@ -75,11 +77,7 @@ public class StateMaster {
 	public void setStateStatus(String stateStatus) {
 		this.stateStatus = stateStatus;
 	}
+
 	
-	
-	
-	
-	
-	
-	
+
 }

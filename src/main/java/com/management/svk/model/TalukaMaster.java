@@ -1,13 +1,10 @@
 package com.management.svk.model;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -22,24 +19,25 @@ public class TalukaMaster {
 
 	@NotBlank
 	@Size(max = 50)
-	private String talukaName;
+	@Column(name = "districtcode")
+	private Integer districtCode;
 
 	// @NotBlank
 	@Size(max = 50)
-	private String talukaDesc;
+	@Column(name = "subdistrictcode")
+	private Integer subDistrictCode;
+
+	@Size(max = 50)
+	@Column(name = "subdistrictnameenglish")
+	private String subDistrictNameEnglish;
+
+	@Size(max = 50)
+	@Column(name = "subdistrictlocalname")
+	private String subDistrictLocalName;
 
 	// @NotBlank
-	@Size(max = 20)
-	private String talukaCode;
-
-	@NotBlank
 	@Size(max = 10)
-	private String talukaStatus;
-
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "district_id", referencedColumnName = "districtId")
-	// @JsonIgnoreProperties("storyList")
-	private DistrictMaster districtMaster;
+	private String talukaStatus = "N";
 
 	public Integer getTalukaId() {
 		return talukaId;
@@ -49,28 +47,36 @@ public class TalukaMaster {
 		this.talukaId = talukaId;
 	}
 
-	public String getTalukaName() {
-		return talukaName;
+	public Integer getDistrictCode() {
+		return districtCode;
 	}
 
-	public void setTalukaName(String talukaName) {
-		this.talukaName = talukaName;
+	public void setDistrictCode(Integer districtCode) {
+		this.districtCode = districtCode;
 	}
 
-	public String getTalukaDesc() {
-		return talukaDesc;
+	public Integer getSubDistrictCode() {
+		return subDistrictCode;
 	}
 
-	public void setTalukaDesc(String talukaDesc) {
-		this.talukaDesc = talukaDesc;
+	public void setSubDistrictCode(Integer subDistrictCode) {
+		this.subDistrictCode = subDistrictCode;
 	}
 
-	public String getTalukaCode() {
-		return talukaCode;
+	public String getSubDistrictNameEnglish() {
+		return subDistrictNameEnglish;
 	}
 
-	public void setTalukaCode(String talukaCode) {
-		this.talukaCode = talukaCode;
+	public void setSubDistrictNameEnglish(String subDistrictNameEnglish) {
+		this.subDistrictNameEnglish = subDistrictNameEnglish;
+	}
+
+	public String getSubDistrictLocalName() {
+		return subDistrictLocalName;
+	}
+
+	public void setSubDistrictLocalName(String subDistrictLocalName) {
+		this.subDistrictLocalName = subDistrictLocalName;
 	}
 
 	public String getTalukaStatus() {
@@ -81,21 +87,9 @@ public class TalukaMaster {
 		this.talukaStatus = talukaStatus;
 	}
 
-	public DistrictMaster getDistrictMaster() {
-		return districtMaster;
-	}
-
-	public void setDistrictMaster(DistrictMaster districtMaster) {
-		this.districtMaster = districtMaster;
-	}
-
-	@Override
-	public String toString() {
-		return "TalukaMaster [talukaId=" + talukaId + ", talukaName=" + talukaName + ", talukaDesc=" + talukaDesc
-				+ ", talukaCode=" + talukaCode + ", talukaStatus=" + talukaStatus + ", districtMaster=" + districtMaster
-				+ "]";
-	}
-	
-	
+//	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	@JoinColumn(name = "district_id")
+//	// @JsonIgnoreProperties("storyList")
+//	private DistrictMaster districtMaster;
 
 }
